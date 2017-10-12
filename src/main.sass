@@ -1,0 +1,92 @@
+ul
+  margin: 0
+  padding: 0
+  li
+    list-style: none
+
+
+.app
+  position: relative
+
+.task-list
+  position: absolute
+  top: 10px
+  left: 20px
+  .add-task
+    width: 330px
+    height: 50px
+    background-color: #FFFFFF
+    text-align: center
+    cursor: pointer
+    span
+      font-size: 18px
+      text-transform: uppercase
+      color: #4C70FE
+      line-height: 50px
+
+.task-item
+  width: 330px
+  height: auto
+  background-color: #FFFFFF
+  margin-top: 10px
+  padding: 20px
+
+.marker
+  position: absolute
+  top: -64px
+  left: -30px
+  width: 64px
+  height: 81px
+  background-image: url("../img/icons/Combined Shape Copy.svg")
+  background-repeat: no-repeat
+
+.navbar
+  margin-bottom: 0
+
+.task-card
+  position: absolute
+  top: 0
+  right: 0
+  width: 500px
+  height: 800px
+  background-color: #FFFFFF
+  .header
+    background-color: #F0F0F0
+    padding: 25px 40px
+
+  .service-type
+    li
+      display: inline-block
+      margin: 10px
+      text-align: center
+      cursor: pointer
+      &:nth-child(1) > div
+        background-image: url("../img/icons/noun_321339_cc.svg")
+      &:nth-child(2) > div
+        background-image: url("../img/icons/noun_321315_cc.svg")
+      &:nth-child(3) > div
+        background-image: url("../img/icons/noun_321363_cc.svg")
+      &:nth-child(4) > div
+        background-image: url("../img/icons/noun_321399_cc.svg")
+      &:nth-child(5) > div
+        background-image: url("../img/icons/noun_321395_cc.svg")
+    .service-img
+      width: 75px
+      height: 75px
+      border-radius: 50%
+      background-repeat: no-repeat
+      background-position: 50% 50%
+  .active-service > div
+    border: 1px solid #4C70FE
+
+  .task-type
+     ul
+       display: flex
+       flex-wrap: wrap
+       li
+         white-space: nowrap
+         margin: 10px 15px
+         padding: 10px 5px
+       .active-task
+          border: 1px solid #4C70FE
+          border-radius: 50px 50px 50px 50px
