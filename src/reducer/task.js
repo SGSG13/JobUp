@@ -6,7 +6,9 @@ import {
     EDIT_TASK,
     EDIT_TASK_ITEM,
     SET_TASKS,
-    SET_SERVICES
+    SET_SERVICES,
+    SET_HEIGHT,
+    SET_HISTORY
 } from '../constants'
 import {Record} from 'immutable'
 import randomId from '../utils/randomId'
@@ -22,9 +24,11 @@ const TaskRecord = Record({
     },
     tasks: [],
     services: [],
+    history: [],
     showCard: false,
     showMarker: 0,
-    action: 'Create'
+    action: 'Create',
+    height: 800
 });
 
 const defaultState = new TaskRecord();
@@ -74,6 +78,14 @@ export default (state = defaultState, action) => {
         case SET_SERVICES:
             return state
                 .set('services', payload.services);
+
+        case SET_HEIGHT:
+            return state
+                .set('height', payload.height);
+        
+        case SET_HISTORY:
+            return state
+                .set('history', payload.history);
         
         default:
             return state;

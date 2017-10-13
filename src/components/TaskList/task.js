@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {deleteTask, editTaskItem} from '../../AC'
 import {dateToString} from '../../utils/dateToString'
-import {taskRef} from '../../api/firebase'
+import {taskRef, historyRef} from '../../api/firebase'
 
 class Task extends Component {
 
@@ -15,8 +15,13 @@ class Task extends Component {
         editTaskItem: PropTypes.func.isRequired
     };
     
-    handledeleteTask = (key) => {
-        taskRef.child(key).remove();
+    handledeleteTask = (task) => {
+        taskRef.child(task.serverKey).remove();
+        historyRef.push({
+            date: task.date,
+            serviceType: task.serviceType,
+            taskType: task.taskType
+        });
         this.props.deleteTask();
     };
 
@@ -29,9 +34,9 @@ class Task extends Component {
         return (
                 <div className="task-item">
                     <div className="task-date">{dateToString(data.date)}</div>
-                    <div className="task-type">I need a {data.serviceType} to {data.taskType}</div>
-                    <Button onClick={this.handleEditTask.bind(this, data.id)}>Edit</Button>
-                    <Button onClick={this.handledeleteTask.bind(this, data.serverKey)}>Delete</Button>
+                    <div className="task-type">I need a {data.serviceType.toLowerCase()} to {data.taskType.toLowerCase()}</div>
+                    <Button className="button-item  blue-btn" onClick={this.handleEditTask.bind(this, data.id)}>Edit</Button>
+                    <Button className="button-item trans-btn" onClick={this.handledeleteTask.bind(this, data)}>Delete</Button>
                 </div>
         );
     }

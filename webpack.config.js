@@ -64,7 +64,7 @@ if (NODE_ENV === 'production') {
             }
         }),
         new CopyWebpackPlugin([
-            {from: 'img/favicon.ico', to: 'img/favicon.ico'}
+            {from: 'libs/bootstrap/bootstrap.min.css', to: '../libs/bootstrap/bootstrap.min.css'}
         ]),
         new CopyWebpackPlugin([
             {from: 'index.html', to: '../index.html'}

@@ -12,3 +12,4 @@ const config = {
 export const firebaseApp = firebase.initializeApp(config);
 export const taskRef = firebaseApp.database().ref('tasks');
 export const servicesRef = firebaseApp.database().ref('services');
+export const historyRef = firebaseApp.database().ref('history');

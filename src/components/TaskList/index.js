@@ -29,7 +29,8 @@ class TaskList extends Component {
         taskRef.on('value', snap => {
             let tasks = [];
             snap.forEach(task => {
-                const { id,
+                const {
+                    id,
                     date,
                     address,
                     location,
@@ -38,7 +39,8 @@ class TaskList extends Component {
                     description
                 } = task.val();
                 const serverKey = task.key;
-                tasks.push({ id,
+                tasks.push({
+                    id,
                     date,
                     address,
                     location,

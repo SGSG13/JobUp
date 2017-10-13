@@ -5,7 +5,8 @@ import Button from 'react-bootstrap/lib/Button'
 import FormGroup from 'react-bootstrap/lib/FormGroup'
 import FormControl from 'react-bootstrap/lib/FormControl'
 import {connect} from 'react-redux'
-import {createTask, editTask, setServices} from '../AC'
+import {createTask, editTask, setServices, setHeight} from '../AC'
+import getHeight from '../utils/getHeight'
 import {taskRef, servicesRef} from '../api/firebase'
 
 class TaskCard extends Component {
@@ -32,6 +33,7 @@ class TaskCard extends Component {
         newTask: PropTypes.object.isRequired,
         services: PropTypes.array.isRequired,
         createTask: PropTypes.func.isRequired,
+        setHeight: PropTypes.func.isRequired,
         editTask: PropTypes.func.isRequired,
         setServices: PropTypes.func.isRequired
     };
@@ -49,7 +51,14 @@ class TaskCard extends Component {
                 services = snap.val()[key]
             }
             this.props.setServices(services);
-        })
+        });
+
+        this.props.setHeight(getHeight());
+        
+    }
+
+    componentDidUpdate () {
+        this.props.setHeight(getHeight());
     }
     
     componentWillReceiveProps() {
@@ -162,16 +171,15 @@ class TaskCard extends Component {
                     <h4>{this.props.action === 'Create' ? 'New' : 'Edit'} Task</h4>
                     <div className="full-description">
                         <p>
-                            {this.state.serviceType === '' ? '' : 'I need a '}<b>{this.state.serviceType}</b>
-                            {this.state.taskType === '' ? '' : ' to '} <b>{this.state.taskType}</b>
-                            {this.state.description === '' ? '' : ', '}<b>{this.state.description}</b>
+                            {this.state.serviceType === '' ? '' : 'I need a '}<b>{this.state.serviceType.toLowerCase()}</b>
+                            {this.state.taskType === '' ? '' : ' to '} <b>{this.state.taskType.toLowerCase()}</b>
+                            {(this.state.description === '' || this.state.serviceType === '') ? '' : ', '}<b>{this.state.description}</b>
                         </p>
                         <p className="address"> {this.state.address === '' ? '' : 'My address is '} {this.state.address}</p>
                     </div>
-                    <Button onClick={this.handleCreateEditTask}>{this.props.action === 'Create' ? 'Create' : 'Edit'}
-                        Task</Button>
+                    <Button className="button-create blue-btn" onClick={this.handleCreateEditTask}>{this.props.action === 'Create' ? 'Create' : 'Edit'} Task</Button>
                 </div>
-                <div className="location">
+                <div className="location option">
                     <h4>Location</h4>
                     <div className="address">
                         <FormGroup className={!this.state.validAddress ? 'has-error': ''}>
@@ -183,9 +191,8 @@ class TaskCard extends Component {
                             />
                         </FormGroup>
                     </div>
-                    <hr />
                 </div>
-                <div className="date">
+                <div className="date option">
                     <h4>Date</h4>
                     <div className="date">
                         <FormGroup className={!this.state.validDate ? 'has-error': ''}>
@@ -197,27 +204,24 @@ class TaskCard extends Component {
                             />
                         </FormGroup>
                     </div>
-                    <hr />
                 </div>
-                <div className="service-type">
+                <div className="service-type option">
                     <h4>Service type</h4>
                     <ul>
                         {this.renderService(this.props.services)}
                     </ul>
-                    <hr />
                 </div>
                 {this.state.serviceType === ''
                     ? ''
                     :
-                    <div className="task-type">
+                    <div className="task-type option">
                         <h4>{this.state.serviceType} tasks</h4>
                         <ul>
                             {this.renderServiceTasks(this.props.services)}
                         </ul>
-                        <hr />
                     </div>}
 
-                <div className="description">
+                <div className="description option">
                     <h4>Task description</h4>
                     <FormGroup >
                         <FormControl
@@ -253,6 +257,6 @@ export default connect((state) => {
         action: state.task.action,
         services: state.task.services
     }
-}, {createTask, editTask, setServices})(TaskCard);
+}, {createTask, editTask, setServices, setHeight})(TaskCard);
 
 

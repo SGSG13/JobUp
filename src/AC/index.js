@@ -6,7 +6,9 @@ import {
     EDIT_TASK,
     EDIT_TASK_ITEM,
     SET_TASKS,
-    SET_SERVICES
+    SET_SERVICES,
+    SET_HEIGHT,
+    SET_HISTORY
 } from '../constants'
 
 export function setLocation(location) {
@@ -61,5 +63,18 @@ export function setServices(services) {
     }
 }
 
+export function setHistory(history) {
+    return {
+        type: SET_HISTORY,
+        payload: {history}
+    }
+}
+
+export function setHeight(height) {
+    return {
+        type: SET_HEIGHT,
+        payload: {height}
+    }
+}
 
 

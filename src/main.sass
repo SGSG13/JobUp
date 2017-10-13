@@ -1,23 +1,131 @@
+@font-face
+  font-family: "Roboto"
+  src: url('../fonts/RobotoRegular/RobotoRegular.eot')
+  src: url('../fonts/RobotoRegular/RobotoRegular.eot?#iefix') format('embedded-opentype')
+  src: url('../fonts/RobotoRegular/RobotoRegular.woff') format('woff')
+  src: url('../fonts/RobotoRegular/RobotoRegular.ttf') format('truetype')
+  font-weight: 400
+
+@font-face
+  font-family: "Roboto"
+  src: url('../fonts/RobotoBold/RobotoBold.eot')
+  src: url('../fonts/RobotoBold/RobotoBold.eot?#iefix') format('embedded-opentype')
+  src: url('../fonts/RobotoBold/RobotoBold.woff') format('woff')
+  src: url('../fonts/RobotoBold/RobotoBold.ttf') format('truetype')
+  font-weight: 700
+
+@font-face
+  font-family: "Arial"
+  src: url('../fonts/ArialRegular/ArialRegular.eot')
+  src: url('../fonts/ArialRegular/ArialRegular.eot?#iefix') format('embedded-opentype')
+  src: url('../fonts/ArialRegular/ArialRegular.woff') format('woff')
+  src: url('../fonts/ArialRegular/ArialRegular.ttf') format('truetype')
+  font-weight: 400
+
+@font-face
+  font-family: "OpenSans"
+  src: url('../fonts/OpenSansBold/OpenSansBold.eot')
+  src: url('../fonts/OpenSansBold/OpenSansBold.eot?#iefix') format('embedded-opentype')
+  src: url('../fonts/OpenSansBold/OpenSansBold.woff') format('woff')
+  src: url('../fonts/OpenSansBold/OpenSansBold.ttf') format('truetype')
+  font-weight: 400
+
+body
+  margin: 0
+  padding: 0
+  font-family: 'Roboto', sans-serif
+  font-size: 16px
+
+
 ul
   margin: 0
   padding: 0
   li
     list-style: none
 
+a
+  color: #1a1b1f
+  &:hover
+    color: #1a1b1f
+    text-decoration: none
+
+button
+  outline: none
+
+.form-group
+  margin: 0
+  input, textarea
+    padding: 0
+    font-size: 18px
+    color: #191a1f
+    border: 1px solid transparent
+    border-radius: 0
+    box-shadow: none
+    &:focus
+      border: 1px solid transparent
+      box-shadow: none
 
 .app
   position: relative
 
+  .navbar
+    min-height: 80px
+    margin-bottom: 0
+    border: none
+    background-color: #FFF
+
+    .navbar-nav>.active>a
+      background-color: #FFF!important
+      color: #191a1f
+      &:after
+        content: ''
+        display: block
+        width: 100%
+        height: 4px
+        background: #1a1b1f
+        position: absolute
+        top: 0
+
+    .nav>li>a
+      padding: 30px 40px 30px 0
+      margin-left: 50px
+      text-transform: uppercase
+      color: #191a1f
+
+    .navbar-brand
+      padding: 30px 30px
+      margin-right: 20px
+      font-family: 'OpenSans', sans-serif
+      font-size: 20px
+      font-weight: 700
+      color: #fa4c6e
+
+    .profile
+      display: block
+      float: right
+      padding: 30px 50px 30px 0
+      text-transform: uppercase
+      color: #191a1f
+
+    .container
+      width: 100%
+
 .task-list
   position: absolute
   top: 10px
-  left: 20px
+  left: 40px
+
   .add-task
     width: 330px
     height: 50px
     background-color: #FFFFFF
     text-align: center
     cursor: pointer
+    box-shadow: 0 1px 2px rgba(0,0,0,0.29)
+    transition: all .3s ease
+    &:hover
+      box-shadow: 0 1px 2px rgba(0,0,0,0.5)
+
     span
       font-size: 18px
       text-transform: uppercase
@@ -30,6 +138,42 @@ ul
   background-color: #FFFFFF
   margin-top: 10px
   padding: 20px
+  box-shadow: 0 1px 2px rgba(0,0,0,0.29)
+  transition: all .3s ease
+  &:hover
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5)
+
+  .button-item
+    border: none
+    border-radius: 4px
+    width: 51px
+    height: 27px
+    margin-right: 10px
+    padding: 0
+    transition: all .3s ease
+
+  .blue-btn
+    color: #fff
+    background: #4c70fe
+    &:hover
+      background: #4567d1
+
+  .trans-btn
+    color: #4c70fe
+    background: #fff
+    &:hover
+      background: #F0F0F0
+
+  .task-date
+    color: #909090
+    font-size: 16px
+
+  .task-type
+    margin-top: 5px
+    margin-bottom: 19px
+    color: #191a1f
+    font-size: 20px
+    line-height: 22px
 
 .marker
   position: absolute
@@ -40,24 +184,59 @@ ul
   background-image: url("../img/icons/Combined Shape Copy.svg")
   background-repeat: no-repeat
 
-.navbar
-  margin-bottom: 0
 
 .task-card
   position: absolute
   top: 0
   right: 0
   width: 500px
-  height: 800px
+  min-height: 892px
   background-color: #FFFFFF
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1)
+
+  h4
+    color: #909090
+    font-size: 14px
+    line-height: 14px
+    text-transform: uppercase
+
+  .option
+    padding: 30px 40px
+    border-bottom: 1px solid #F0F0F0
+
   .header
     background-color: #F0F0F0
     padding: 25px 40px
+    .full-description
+      font-size: 24px
+      color: #1a1b1f
+      .address
+        font-family: 'Arial', sans-serif
+        font-size: 14px
+
+  .button-create
+    font-family: 'Arial', sans-serif
+    font-size: 18px
+    border: none
+    border-radius: 4px
+    width: 150px
+    height: 40px
+    padding: 0
+    color: #fff
+    text-transform: uppercase
+    background: #4c70fe
+    transition: all .3s ease
+    &:hover
+      background: #4567d1
+
+  .date input
+    width: 250px
 
   .service-type
     li
       display: inline-block
-      margin: 10px
+      font-size: 14px
+      margin-right: 7px
       text-align: center
       cursor: pointer
       &:nth-child(1) > div
@@ -68,16 +247,22 @@ ul
         background-image: url("../img/icons/noun_321363_cc.svg")
       &:nth-child(4) > div
         background-image: url("../img/icons/noun_321399_cc.svg")
-      &:nth-child(5) > div
-        background-image: url("../img/icons/noun_321395_cc.svg")
+      &:nth-child(5)
+        margin-right: 0
+        div
+          background-image: url("../img/icons/noun_321395_cc.svg")
+
     .service-img
       width: 75px
       height: 75px
       border-radius: 50%
+      margin-bottom: 5px
       background-repeat: no-repeat
       background-position: 50% 50%
-  .active-service > div
-    border: 1px solid #4C70FE
+      border: 1px solid transparent
+      transition: border .3s ease
+    .active-service > div
+      border: 1px solid #4C70FE
 
   .task-type
      ul
@@ -85,8 +270,51 @@ ul
        flex-wrap: wrap
        li
          white-space: nowrap
-         margin: 10px 15px
-         padding: 10px 5px
+         margin: 10px 0
+         padding: 10px 14px
+         border: 1px solid transparent
+         border-radius: 50px 50px 50px 50px
+         cursor: pointer
+         transition: border .3s ease
        .active-task
           border: 1px solid #4C70FE
-          border-radius: 50px 50px 50px 50px
+
+  .description
+    border-bottom: none
+    textarea
+      resize: none
+      border-bottom: 1px solid #dbdbdb
+
+.modal-dialog
+  width: 400px
+  margin: 300px auto
+
+  .modal-content
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.29)
+    border-radius: 0
+
+  .modal-footer
+    text-align: center
+    padding: 11px 20px 17px
+    button
+      font-size: 14px
+      border: none
+      border-radius: 4px
+      width: 100px
+      height: 35px
+      padding: 0
+      color: #fff
+      text-transform: uppercase
+      background: #4c70fe
+      transition: all .3s ease
+      &:hover
+        background: #4567d1
+
+.history-task
+  display: flex
+  flex-wrap: wrap
+
+
+
+
+

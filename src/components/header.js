@@ -22,6 +22,7 @@ export default function Header (){
                         <NavItem>History</NavItem>
                     </LinkContainer>
                 </Nav>
+                <Link className="profile" to="/">Profile</Link>
             </Navbar>
         </div>
     )
