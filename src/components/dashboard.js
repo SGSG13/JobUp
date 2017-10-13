@@ -6,6 +6,7 @@ import TaskCard from './taskCard'
 import {connect} from 'react-redux'
 import getHeight from '../utils/getHeight'
 import {setHeight} from '../AC'
+import {CSSTransitionGroup} from 'react-transition-group'
 
 class Dashboard extends Component {
     static propTypes = {
@@ -22,7 +23,12 @@ class Dashboard extends Component {
             <div style={{height: this.props.height  || 880, position: 'relative'}}>
                 <Map />
                 <TaskList />
-                {this.props.showCard ? <TaskCard /> : ''}
+                <CSSTransitionGroup
+                    transitionName="card"
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}>
+                    {this.props.showCard && <TaskCard />}
+                </CSSTransitionGroup>
             </div>
         );
     }

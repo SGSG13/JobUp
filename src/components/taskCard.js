@@ -9,6 +9,7 @@ import {createTask, editTask, setServices, setHeight} from '../AC'
 import getHeight from '../utils/getHeight'
 import {taskRef, servicesRef} from '../api/firebase'
 
+
 class TaskCard extends Component {
     constructor(props) {
         super(props);
@@ -166,85 +167,85 @@ class TaskCard extends Component {
     
     render() {
         return (
-            <div className="task-card">
-                <div className="header">
-                    <h4>{this.props.action === 'Create' ? 'New' : 'Edit'} Task</h4>
-                    <div className="full-description">
-                        <p>
-                            {this.state.serviceType === '' ? '' : 'I need a '}<b>{this.state.serviceType.toLowerCase()}</b>
-                            {this.state.taskType === '' ? '' : ' to '} <b>{this.state.taskType.toLowerCase()}</b>
-                            {(this.state.description === '' || this.state.serviceType === '') ? '' : ', '}<b>{this.state.description}</b>
-                        </p>
-                        <p className="address"> {this.state.address === '' ? '' : 'My address is '} {this.state.address}</p>
-                    </div>
-                    <Button className="button-create blue-btn" onClick={this.handleCreateEditTask}>{this.props.action === 'Create' ? 'Create' : 'Edit'} Task</Button>
-                </div>
-                <div className="location option">
-                    <h4>Location</h4>
-                    <div className="address">
-                        <FormGroup className={!this.state.validAddress ? 'has-error': ''}>
-                            <FormControl
-                                name="address"
-                                type="text"
-                                value={this.state.address}
-                                onChange={ev => this.setState({address: ev.target.value})}
-                            />
-                        </FormGroup>
-                    </div>
-                </div>
-                <div className="date option">
-                    <h4>Date</h4>
-                    <div className="date">
-                        <FormGroup className={!this.state.validDate ? 'has-error': ''}>
-                            <FormControl
-                                name="date"
-                                type="datetime-local"
-                                value={this.state.date}
-                                onChange={ev => this.setState({date: ev.target.value})}
-                            />
-                        </FormGroup>
-                    </div>
-                </div>
-                <div className="service-type option">
-                    <h4>Service type</h4>
-                    <ul>
-                        {this.renderService(this.props.services)}
-                    </ul>
-                </div>
-                {this.state.serviceType === ''
-                    ? ''
-                    :
-                    <div className="task-type option">
-                        <h4>{this.state.serviceType} tasks</h4>
-                        <ul>
-                            {this.renderServiceTasks(this.props.services)}
-                        </ul>
-                    </div>}
+                <div className="task-card">
+                        <div className="header">
+                            <h4>{this.props.action === 'Create' ? 'New' : 'Edit'} Task</h4>
+                            <div className="full-description">
+                                <p>
+                                    {this.state.serviceType === '' ? '' : 'I need a '}<b>{this.state.serviceType.toLowerCase()}</b>
+                                    {this.state.taskType === '' ? '' : ' to '} <b>{this.state.taskType.toLowerCase()}</b>
+                                    {(this.state.description === '' || this.state.serviceType === '') ? '' : ', '}<b>{this.state.description}</b>
+                                </p>
+                                <p className="address"> {this.state.address === '' ? '' : 'My address is '} {this.state.address}</p>
+                            </div>
+                            <Button className="button-create blue-btn" onClick={this.handleCreateEditTask}>{this.props.action === 'Create' ? 'Create' : 'Edit'} Task</Button>
+                        </div>
+                        <div className="location option">
+                            <h4>Location</h4>
+                            <div className="address">
+                                <FormGroup className={!this.state.validAddress ? 'has-error': ''}>
+                                    <FormControl
+                                        name="address"
+                                        type="text"
+                                        value={this.state.address}
+                                        onChange={ev => this.setState({address: ev.target.value})}
+                                    />
+                                </FormGroup>
+                            </div>
+                        </div>
+                        <div className="date option">
+                            <h4>Date</h4>
+                            <div className="date">
+                                <FormGroup className={!this.state.validDate ? 'has-error': ''}>
+                                    <FormControl
+                                        name="date"
+                                        type="datetime-local"
+                                        value={this.state.date}
+                                        onChange={ev => this.setState({date: ev.target.value})}
+                                    />
+                                </FormGroup>
+                            </div>
+                        </div>
+                        <div className="service-type option">
+                            <h4>Service type</h4>
+                            <ul>
+                                {this.renderService(this.props.services)}
+                            </ul>
+                        </div>
+                        {this.state.serviceType === ''
+                            ? ''
+                            :
+                            <div className="task-type option">
+                                <h4>{this.state.serviceType} tasks</h4>
+                                <ul>
+                                    {this.renderServiceTasks(this.props.services)}
+                                </ul>
+                            </div>}
 
-                <div className="description option">
-                    <h4>Task description</h4>
-                    <FormGroup >
-                        <FormControl
-                            componentClass="textarea"
-                            value={this.state.description}
-                            onChange={ev => this.setState({description: ev.target.value})}
-                        />
-                    </FormGroup>
-                </div>
-                <div className="static-modal">
-                    <Modal show={this.state.modal}>
-                        <Modal.Header>
-                            <Modal.Title>Warning!</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            Select service type and task
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={this.hideModal}>Ok</Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
-            </div>
+                        <div className="description option">
+                            <h4>Task description</h4>
+                            <FormGroup >
+                                <FormControl
+                                    componentClass="textarea"
+                                    value={this.state.description}
+                                    onChange={ev => this.setState({description: ev.target.value})}
+                                />
+                            </FormGroup>
+                        </div>
+                        <div className="static-modal">
+                            <Modal show={this.state.modal}>
+                                <Modal.Header>
+                                    <Modal.Title>Warning!</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    Select service type and task
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button onClick={this.hideModal}>Ok</Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </div>
+                    </div>
         );
     }
 }

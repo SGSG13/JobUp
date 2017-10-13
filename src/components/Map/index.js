@@ -51,7 +51,7 @@ class Map extends Component {
                 <GoogleMapReact
                     onClick={this.setHint}
                     defaultZoom = {17}
-                    center = {{lat: 53.903330, lng: 30.336368}}
+                    center = {{lat: 28.538946, lng: -81.385604}}
                     bootstrapURLKeys={{
                     key: 'AIzaSyBbp3BpE6Rlcbfh9uXGQcOtb02VTm5r_-4',
                     language: 'en'
